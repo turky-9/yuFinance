@@ -5,8 +5,62 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:yuFinanceGUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="MainWindow" Height="600" Width="1000">
+    <!--
+            メイン
+        -->
+    <Grid Name="grdMain">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="1"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <!--
+                メニュー
+            -->
+        <Grid Name="grdMenu" Grid.Column="0" Background="LightGray">
+            <StackPanel>
+                <Button Name="btnJournal" Content="仕訳" Background="LightBlue" />
+                <Button Name="btnKmk" Content="科目" />
+                <Button Name="btnTr" Content="取引先" />
+            </StackPanel>
+        </Grid>
+
+        <Rectangle Grid.Column="1" Width="1" Fill="#FF0000AA"/>
+
+        <!--
+            仕訳
+        -->
+        <Grid Name="grdJournal" Grid.Column="2">
+            <DataGrid Name="dgTr" Grid.Row="1" Margin="5" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Path=TrCd}" Foreground="Black" Header="取引先コード" />
+                    <DataGridTextColumn Binding="{Binding Path=TrNm}" Foreground="Black" Header="取引先名称" />
+                    <DataGridTextColumn Binding="{Binding Path=InsDate, StringFormat=yyyy/MM/dd HH:mm:ss}" Foreground="Black" Header="登録日" />
+                    <!--
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="btnSearchDelete" Content="削除" Click="btnSearchDeleteClick"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    -->
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <!--
+            科目
+        -->
+        <Grid Name="grdKmk" Grid.Column="2" Visibility="Collapsed" >
+        </Grid>
+
+        <!--
+            取引先
+        -->
+        <Grid Name="grdTr" Grid.Column="2" Visibility="Collapsed" >
+
+        </Grid>
     </Grid>
 </Window>

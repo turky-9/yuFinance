@@ -2,10 +2,27 @@
 using System.Linq;
 using yuFinance.model;
 using yuFinance.util;
+using yuFinance.context;
+using System.Collections.Generic;
+using System.Collections.Immutable;
 
 namespace yuFinance.app
 {
-    public static class TrMasterApp
+    public class TrMasterApp
+    {
+        private Context Ctx { get; set; }
+        public TrMasterApp(Context ctx)
+        {
+            this.Ctx = ctx;
+        }
+
+        public ImmutableList<DatTr> GetList()
+        {
+            return this.Ctx.TrMaster.ToImmutableList();
+        }
+    }
+
+    public static class TrMasterAppExtendion
     {
 
         public static Result CreateEntity(this Result process, string cd, string nm)

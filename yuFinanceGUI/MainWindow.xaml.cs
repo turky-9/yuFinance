@@ -28,6 +28,7 @@ namespace yuFinanceGUI
         public IContextBuilder Builder { get; private set; }
         public IContextStorer Storer { get; private set; }
         public Context Context { get; private set; }
+        public TrMasterApp TrApp { get; private set; }
 
         public MainWindow()
         {
@@ -39,24 +40,26 @@ namespace yuFinanceGUI
             this.Builder = new FromFileBuilder(kmk, tr, jnl);
             this.Storer = new ToFileStorer(kmk, tr, jnl);
             this.Context = this.Builder.Build();
+            this.TrApp = new TrMasterApp(this.Context);
 
-            var result = new StartProcess(this.Context)
-                .CreateEntity("001", "hoge co.ltd")
-                .CheckCd()
-                .CheckNm()
-                .IsExist()
-                .AddTr();
+            //var result = new StartProcess(this.Context)
+            //    .CreateEntity("001", "hoge co.ltd")
+            //    .CheckCd()
+            //    .CheckNm()
+            //    .IsExist()
+            //    .AddTr();
 
-            switch(result)
-            {
-                case Success<DatTr> x:
-                    this.Context.Store(this.Storer);
-                    Console.Out.WriteLine("success");
-                    break;
-                case Faild x:
-                    Console.Out.WriteLine(x.Error);
-                    break;
-            }
+            //switch(result)
+            //{
+            //    case Success<DatTr> x:
+            //        this.Context.Store(this.Storer);
+            //        Console.Out.WriteLine("success");
+            //        break;
+            //    case Faild x:
+            //        Console.Out.WriteLine(x.Error);
+            //        break;
+            //}
+            this.dgTr.ItemsSource = this.TrApp.GetList();
         }
     }
 }

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 using System.Reflection;
 using System.IO;
 using System.Runtime.Serialization;
+using yuFinance.model;
 
-namespace yuFinance
+namespace yuFinance.context
 {
     public interface IContextStorer
     {

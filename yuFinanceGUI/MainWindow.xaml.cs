@@ -14,6 +14,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using yuFinance;
+using yuFinance.app;
+using yuFinance.context;
+using yuFinance.model;
 
 namespace yuFinanceGUI
 {
@@ -37,13 +40,18 @@ namespace yuFinanceGUI
             this.Storer = new ToFileStorer(kmk, tr, jnl);
             this.Context = this.Builder.Build();
 
-            var trapp = new TrMasterApp(this.Context);
-            var result = trapp.AddTr(new First(), "001", "hoge co.ltd");
+            var result = new StartProcess(this.Context)
+                .CreateEntity("001", "hoge co.ltd")
+                .CheckCd()
+                .CheckNm()
+                .IsExist()
+                .AddTr();
 
             switch(result)
             {
-                case Success<bool> x:
+                case Success<DatTr> x:
                     this.Context.Store(this.Storer);
+                    Console.Out.WriteLine("success");
                     break;
                 case Faild x:
                     Console.Out.WriteLine(x.Error);

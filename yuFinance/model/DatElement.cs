@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
+using yuFinance.util;
 
-namespace yuFinance
+namespace yuFinance.model
 {
     [DataContract]
     public class DatElement

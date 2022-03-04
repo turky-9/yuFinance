@@ -43,20 +43,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractApp.cs" />
-    <Compile Include="Context.cs" />
-    <Compile Include="ContextBuilder.cs" />
-    <Compile Include="ContextStorer.cs" />
-    <Compile Include="DatElement.cs" />
-    <Compile Include="DatJournal.cs" />
-    <Compile Include="DatKmk.cs" />
-    <Compile Include="DatTr.cs" />
-    <Compile Include="EDrCrKbn.cs" />
-    <Compile Include="EKmkKbn.cs" />
+    <Compile Include="app\AbstractApp.cs" />
+    <Compile Include="context\Context.cs" />
+    <Compile Include="context\ContextBuilder.cs" />
+    <Compile Include="context\ContextStorer.cs" />
+    <Compile Include="model\DatElement.cs" />
+    <Compile Include="model\DatJournal.cs" />
+    <Compile Include="model\DatKmk.cs" />
+    <Compile Include="model\DatTr.cs" />
+    <Compile Include="model\EDrCrKbn.cs" />
+    <Compile Include="model\EKmkKbn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Result.cs" />
-    <Compile Include="TrMasterApp.cs" />
-    <Compile Include="UtlInit.cs" />
+    <Compile Include="app\Result.cs" />
+    <Compile Include="app\TrMasterApp.cs" />
+    <Compile Include="util\UtilApp.cs" />
+    <Compile Include="util\UtlInit.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

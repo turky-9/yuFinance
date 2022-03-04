@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using yuFinance.model;
 
-namespace yuFinance
+namespace yuFinance.util
 {
-    public class UtlInit
+    internal class UtlInit
     {
         public static int Number() => -1;
         public static decimal Amount() => -1;

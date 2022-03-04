@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.IO;
+using yuFinance.model;
+using yuFinance.util;
 
-namespace yuFinance
+namespace yuFinance.context
 {
     public interface IContextBuilder
     {

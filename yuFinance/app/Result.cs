@@ -7,6 +7,9 @@ using yuFinance.context;
 
 namespace yuFinance.app
 {
+    /// <summary>
+    /// 処理を表す親クラス
+    /// </summary>
     public abstract class Result
     {
         public abstract bool IsFailed { get; }
@@ -22,12 +25,24 @@ namespace yuFinance.app
         }
     }
 
-    public class StartProcess : Result
+    /// <summary>
+    /// 処理開始
+    /// </summary>
+    public class StartProcess<T>: Result where T : AbstractApp
     {
         public override bool IsFailed => false;
-        public StartProcess(Context ctx) : base(ctx) { }
+        private AbstractApp App;
+
+        public StartProcess(Context ctx, T app) : base(ctx)
+        {
+            this.App = app;
+        }
     }
 
+    /// <summary>
+    /// 成功
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class Success<T> : Result
     {
         public override bool IsFailed => false;
@@ -39,6 +54,9 @@ namespace yuFinance.app
         }
     }
 
+    /// <summary>
+    /// 失敗
+    /// </summary>
     public class Faild : Result
     {
         public override bool IsFailed => true;

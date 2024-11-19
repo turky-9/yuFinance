@@ -8,24 +8,24 @@ using System.Runtime.Serialization;
 namespace yuFinance.model
 {
     [DataContract]
-    public enum EDrCrKbn
+    public enum EJournalStat
     {
         /// <summary>
-        /// 初期値
+        /// 通常
         /// </summary>
         [EnumMember]
-        None,
+        Normal,
 
         /// <summary>
-        /// 借方
+        /// 決算
         /// </summary>
         [EnumMember]
-        Debtor,
+        Settlement,
 
         /// <summary>
-        /// 貸方
+        /// 削除
         /// </summary>
         [EnumMember]
-        Creditor
+        Delete
     }
 }

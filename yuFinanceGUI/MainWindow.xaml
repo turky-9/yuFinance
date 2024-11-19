@@ -7,37 +7,20 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000">
     <!--
-            メイン
-        -->
+        メイン
+    -->
     <Grid Name="grdMain">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="1"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <!--
-                メニュー
-            -->
-        <Grid Name="grdMenu" Grid.Column="0" Background="LightGray">
-            <StackPanel>
-                <Button Name="btnJournal" Content="仕訳" Background="LightBlue" />
-                <Button Name="btnKmk" Content="科目" />
-                <Button Name="btnTr" Content="取引先" />
-            </StackPanel>
-        </Grid>
-
-        <Rectangle Grid.Column="1" Width="1" Fill="#FF0000AA"/>
-
-        <!--
-            仕訳
-        -->
-        <Grid Name="grdJournal" Grid.Column="2">
-            <DataGrid Name="dgTr" Grid.Row="1" Margin="5" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Path=TrCd}" Foreground="Black" Header="取引先コード" />
-                    <DataGridTextColumn Binding="{Binding Path=TrNm}" Foreground="Black" Header="取引先名称" />
-                    <DataGridTextColumn Binding="{Binding Path=InsDate, StringFormat=yyyy/MM/dd HH:mm:ss}" Foreground="Black" Header="登録日" />
-                    <!--
+        <TabControl>
+            <TabItem Name="tiTr" Header="取引先">
+                <TabControl>
+                    <TabItem Name="tiTrList" Header="一覧">
+                        <Grid>
+                            <DataGrid Name="dgTr" Margin="5" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding Path=TrCd}" Foreground="Black" Header="取引先コード" />
+                                    <DataGridTextColumn Binding="{Binding Path=TrNm}" Foreground="Black" Header="取引先名称" />
+                                    <DataGridTextColumn Binding="{Binding Path=InsDate, StringFormat=yyyy/MM/dd HH:mm:ss}" Foreground="Black" Header="登録日" />
+                                    <!--
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -46,21 +29,77 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                     -->
-                </DataGrid.Columns>
-            </DataGrid>
-        </Grid>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Name="tiTrInp" Header="入力">
+                    </TabItem>
+                </TabControl>
+            </TabItem>
 
-        <!--
-            科目
-        -->
-        <Grid Name="grdKmk" Grid.Column="2" Visibility="Collapsed" >
-        </Grid>
+            <TabItem Name="tiKmk" Header="科目">
+                <TabControl>
+                    <TabItem Name="tiKmkList" Header="一覧">
+                        <Grid>
+                            <DataGrid Name="dgKmk" Margin="5" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding Path=KmkCd}" Foreground="Black" Header="科目コード" />
+                                    <DataGridTextColumn Binding="{Binding Path=KmkNm}" Foreground="Black" Header="科目名称" />
+                                    <DataGridTextColumn Binding="{Binding Path=KmkKbn}" Foreground="Black" Header="科目区分" />
+                                    <DataGridTextColumn Binding="{Binding Path=DrCrKbn}" Foreground="Black" Header="貸借区分" />
+                                    <DataGridTextColumn Binding="{Binding Path=Order}" Foreground="Black" Header="並び順" />
+                                    <DataGridTextColumn Binding="{Binding Path=InsDate, StringFormat=yyyy/MM/dd HH:mm:ss}" Foreground="Black" Header="登録日" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Name="tiKmkInp" Header="入力">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="5*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="科目コード:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox Grid.Row="0" Grid.Column="1" Name="txtKmkInpCd" Width="200" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
-        <!--
-            取引先
-        -->
-        <Grid Name="grdTr" Grid.Column="2" Visibility="Collapsed" >
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="科目名称:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" Name="txtKmkInpName" Width="400" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
-        </Grid>
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="科目区分:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <ComboBox Grid.Row="2" Grid.Column="1" Name="cbKmkInpKKbn" Width="200" DisplayMemberPath="Value" SelectedValuePath="Key" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="貸借区分:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <ComboBox Grid.Row="3" Grid.Column="1" Name="cbKmkInpDCKbn" Width="200" DisplayMemberPath="Value" SelectedValuePath="Key" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                            <TextBlock Grid.Row="4" Grid.Column="0" Text="並び順:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBox Grid.Row="4" Grid.Column="1" Name="txtKmkInpOrder" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                            <Button Grid.Row="5" Grid.Column="1" Name="btnKmkInpExec" Content="登録" Click="BtnKmkInpExec_Click" Width="100" Height="40" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+
+            <TabItem Name="tiInp" Header="取引">
+                <TabControl>
+                    <TabItem Header="入金">
+                    </TabItem>
+                    <TabItem Header="出金">
+                    </TabItem>
+                    <TabItem Header="振替">
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

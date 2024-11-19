@@ -13,16 +13,29 @@ namespace yuFinance.model
     {
         [DataMember]
         public int JnlNo { get; private set; } = UtlInit.Number();
+
+        /// <summary>
+        /// 発生日付
+        /// </summary>
         [DataMember]
         public DateTime Accrual { get; private set; } = UtlInit.DateTime();
+
+        /// <summary>
+        /// 借方
+        /// </summary>
         [DataMember]
         public List<DatElement> Debtor { get; private set; } = UtlInit.DatList<DatElement>();
+
+        /// <summary>
+        /// 貸方
+        /// </summary>
         [DataMember]
         public List<DatElement> Creditor { get; private set; } = UtlInit.DatList<DatElement>();
+
         [DataMember]
         public string Tekiyo { get; private set; } = UtlInit.String();
         [DataMember]
-        public bool IsDeleted { get; private set; } = UtlInit.False();
+        public EJournalStat Stat { get; private set; } = UtlInit.JournalStat();
         [DataMember]
         public DateTime InsDate { get; private set; } = UtlInit.DateTime();
         [DataMember]

@@ -14,9 +14,9 @@ namespace yuFinance.model
         [DataMember]
         public decimal Amount { get; private set; } = UtlInit.Amount();
         [DataMember]
-        public DatKmk Kmk { get; private set; } = UtlInit.Kmk();
+        public string KmkCd { get; private set; } = UtlInit.String();
         [DataMember]
-        public DatTr Tr { get; private set; } = UtlInit.Tr();
+        public String TrCd { get; private set; } = UtlInit.String();
         [DataMember]
         public string Tekiyo { get; private set; } = UtlInit.String();
         [DataMember]

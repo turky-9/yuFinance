@@ -10,27 +10,39 @@ namespace yuFinance.model
     [DataContract]
     public enum EKmkKbn
     {
-        // 初期値
+        /// <summary>
+        /// 初期値
+        /// </summary>
         [EnumMember]
         None,
 
-        // 資産
+        /// <summary>
+        /// 資産
+        /// </summary>
         [EnumMember]
         Assets,
 
-        // 負債
+        /// <summary>
+        /// 負債
+        /// </summary>
         [EnumMember]
         Liabilities,
 
-        // 資本
+        /// <summary>
+        /// 資本
+        /// </summary>
         [EnumMember]
         Equity,
 
-        // 収益
+        /// <summary>
+        /// 収益
+        /// </summary>
         [EnumMember]
         Revenue,
 
-        // 費用
+        /// <summary>
+        /// 費用
+        /// </summary>
         [EnumMember]
         Expenses
     }

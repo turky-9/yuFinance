@@ -15,6 +15,7 @@ namespace yuFinance.util
         public static DateTime DateTime() => new DateTime(1000, 1, 1);
         public static EDrCrKbn DrCrKbn() => EDrCrKbn.None;
         public static EKmkKbn KmkKbn() => EKmkKbn.None;
+        public static EJournalStat JournalStat() => EJournalStat.Normal;
         public static string String() => string.Empty;
         public static DatKmk Kmk() => new DatKmk(); 
         public static DatTr Tr() => new DatTr();

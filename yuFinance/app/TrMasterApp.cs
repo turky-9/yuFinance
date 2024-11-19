@@ -8,12 +8,10 @@ using System.Collections.Immutable;
 
 namespace yuFinance.app
 {
-    public class TrMasterApp
+    public class TrMasterApp : AbstractApp
     {
-        private Context Ctx { get; set; }
-        public TrMasterApp(Context ctx)
+        public TrMasterApp(Context ctx) : base(ctx)
         {
-            this.Ctx = ctx;
         }
 
         public ImmutableList<DatTr> GetList()
@@ -25,7 +23,7 @@ namespace yuFinance.app
     public static class TrMasterAppExtendion
     {
 
-        public static Result CreateEntity(this Result process, string cd, string nm)
+        public static Result TrCreateEntity(this Result process, string cd, string nm)
         {
             if(process.IsFailed)
             {
@@ -37,7 +35,7 @@ namespace yuFinance.app
             return new Success<DatTr>(ctx, d);
         }
 
-        public static Result CheckCd(this Result process)
+        public static Result TrCheckCd(this Result process)
         {
             var (ctx, failed, success) = UtilApp.PreProcess<DatTr>(process);
             if (failed != null)
@@ -53,7 +51,7 @@ namespace yuFinance.app
             return new Success<DatTr>(ctx, success.Result);
         }
 
-        public static Result CheckNm(this Result process)
+        public static Result TrCheckNm(this Result process)
         {
             var (ctx, failed, success) = UtilApp.PreProcess<DatTr>(process);
             if (failed != null)
@@ -69,7 +67,7 @@ namespace yuFinance.app
             return new Success<DatTr>(ctx, success.Result);
         }
 
-        public static Result IsExist(this Result process)
+        public static Result TrIsExist(this Result process)
         {
             var (ctx, failed, success) = UtilApp.PreProcess<DatTr>(process);
             if (failed != null)
@@ -88,7 +86,7 @@ namespace yuFinance.app
             }
         }
 
-        public static Result AddTr(this Result process)
+        public static Result TrAdd(this Result process)
         {
             var (ctx, failed, success) = UtilApp.PreProcess<DatTr>(process);
             if (failed != null)
@@ -102,7 +100,7 @@ namespace yuFinance.app
             return new Success<DatTr>(ctx, success.Result);
         }
 
-        public static Result GetTr(this Result process, string cd)
+        public static Result TrGet(this Result process, string cd)
         {
             var (ctx, failed, success) = UtilApp.PreProcess<DatTr>(process);
             if (failed != null)
